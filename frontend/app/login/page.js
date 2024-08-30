@@ -1,19 +1,28 @@
-'use client'
+'use client';
 
-import { Box, Button, TextField, Typography, Paper } from '@mui/material';
+import { Box, Button, TextField, Typography, Paper, Container, IconButton, InputAdornment } from '@mui/material';
 import React, { useState } from 'react';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [IDNum, setIDNum] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (e) => e.preventDefault();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Login:', { email, password });
+    console.log('Login:', { IDNum, password });
   };
 
   return (
-    <Box
+    <Container
+      maxWidth={false}
+      disableGutters
       sx={{
         position: 'relative',
         display: 'flex',
@@ -22,8 +31,9 @@ const Login = () => {
         height: '100vh',
         backgroundImage: "url('/images/uclm.png')",
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        width: '100vw',
       }}
     >
       <Box
@@ -41,9 +51,7 @@ const Login = () => {
           borderRadius: 2,
           boxShadow: 3,
           width: '390px',
-          height: '50vh',
-          
-          
+          height: 'auto',
         }}
       >
         <Typography variant="h4" component="h2" gutterBottom align="center">
@@ -55,20 +63,34 @@ const Login = () => {
               fullWidth
               label="ID Number"
               variant="outlined"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={IDNum}
+              onChange={(e) => setIDNum(e.target.value)}
               required
             />
           </Box>
-          <Box mb={4}>
+          <Box mb={2}>
             <TextField
               fullWidth
               label="Password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               variant="outlined"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </Box>
           <Button
@@ -79,10 +101,13 @@ const Login = () => {
           >
             Login
           </Button>
-          <Button href="/register">Register</Button>
+          <Box mt={2} display="flex" justifyContent="space-between">
+            <Button href="/forgot-password" size="small">Forgot Password?</Button>
+            <Button href="/register" size="small">NEW STUDENT?</Button>
+          </Box>
         </form>
       </Paper>
-    </Box>
+    </Container>
   );
 };
 

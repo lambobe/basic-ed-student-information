@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Box, Button, TextField, Typography, Paper } from '@mui/material';
+import { Box, Button, TextField, Typography, Paper, Container} from '@mui/material';
 
 const Register = () => {
   const [IDNum, setIDNum] = useState('');
@@ -18,12 +18,14 @@ const Register = () => {
   };
 
   return (
-    <Box
+    <Container
+      maxWidth={false}  
+      disableGutters  
       sx={{
-        position: 'relative',
+          position: 'relative',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+         justifyContent: 'center',
         height: '100vh',
         backgroundImage: "url('/images/basic-ed.png')",
         backgroundSize: 'cover',
@@ -44,58 +46,72 @@ const Register = () => {
           padding: 4,
           borderRadius: 2,
           boxShadow: 3,
-          width: '400px',
+          width:  '400px',
         }}
       >
         <Typography variant="h4" component="h2" gutterBottom align="center">
           Register
         </Typography>
-        <form onSubmit={handleSubmit}>
-          <Box mb={2}>
-            <TextField
-              fullWidth
-              label="ID Number"
-              type="IDNum"
-              variant="outlined"
-              value={IDNum}
-              onChange={(e) => setIDNum(e.target.value)}
-              required
-            />
-          </Box>
-          <Box mb={2}>
-            <TextField
-              fullWidth
-              label="Password"
-              type="password"
-              variant="outlined"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </Box>
-          <Box mb={4}>
-            <TextField
-              fullWidth
-              label="Confirm Password"
-              type="password"
-              variant="outlined"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </Box>
-          <Button
-            type="submit"
-            variant="contained"
-            color="success"
-            fullWidth
-          >
-            Register
-          </Button>
-          <Button href="/login" >Login</Button>
+            <form onSubmit={handleSubmit}>
+    <Box mb={2}>
+        <TextField
+          fullWidth
+          label="ID Number"
+          type="IDNum"
+          variant="outlined"
+          value={IDNum}
+          onChange={(e) => setIDNum(e.target.value)}
+          required
+    />
+  </Box>
+  <Box mb={2}>
+    <TextField
+      fullWidth
+      label="Password"
+          type="password"
+      variant="outlined"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+  </Box>
+  <Box mb={4}>
+    <TextField
+      fullWidth
+      label="Confirm Password"
+      type="password"
+      variant="outlined"
+      value={confirmPassword}
+      onChange={(e) => setConfirmPassword(e.target.value)}
+      required
+    />
+  </Box>
+
+
+  <Box mb={2}>
+    <Button
+      type="submit"
+      variant="contained"
+      color="success"
+      fullWidth
+    >
+      Register
+    </Button>
+  </Box>
+
+  <Button 
+    href="/login" 
+    variant="contained"
+    color="primary"
+    fullWidth
+  >
+    Login
+  </Button>
+         
         </form>
       </Paper>
-    </Box>
+
+    </Container>
   );
 };
 
