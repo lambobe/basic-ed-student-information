@@ -2,14 +2,20 @@
 import React, { useState } from 'react';
 import { Container, Box, TextField, Button, Typography, Paper, Grid } from '@mui/material';
 
-const Admission = () => {
+const partialReg = () => {
   const [studentInfo, setStudentInfo] = useState({
     firstName: '',
     lastName: '',
+    suffix: '',
+    middlename: '',
     dob: '',
-    address: '',
-    contact: '',
+
   });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +25,11 @@ const Admission = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Student Info:', studentInfo);
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+    console.log('Register:', { email, passw });
   };
 
   return (
@@ -39,7 +50,7 @@ const Admission = () => {
               backgroundImage: "url('/images/kids.jpg')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              filter: 'brightness(80%)',
+              filter: 'brightness(75%)',
             }}
           />
         </Grid>
@@ -54,28 +65,30 @@ const Admission = () => {
               justifyContent: 'center',
               backgroundColor: 'rgba(255, 255, 255, 0.9)',
               padding: 4,
+              
             }}
           >
             <Paper
               sx={{
                 padding: 4,
                 borderRadius: 2,
-                width: '100%',
-                maxWidth: '400px',
+                width: '90%',
+                maxWidth: '700px',
                 boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+                
               }}
             >
               <Typography
                 variant="h4"
-                align="center"
+                align="left"
                 gutterBottom
                 sx={{
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontWeight: 800,
+                  fontFamily: 'Helvetica, serif',
+                  fontWeight: 'bold',
                   color: '#1E3A8A',
                 }}
               >
-                Admission Form
+                Student Registration Form
               </Typography>
               <form onSubmit={handleSubmit}>
                 <TextField
@@ -98,7 +111,27 @@ const Admission = () => {
                   margin="normal"
                   required
                 />
+            
+                 <TextField
+                  fullWidth
+                  label="Middlename"
+                  name="middlename"
+                  variant="outlined"
+                  value={studentInfo.middlename}
+                  onChange={handleChange}
+                  margin="normal"
+
+                />
                 <TextField
+                  fullWidth
+                  label="Suffix Name"
+                  name="suffix"
+                  variant="outlined"
+                  value={studentInfo.suffix}
+                  onChange={handleChange}
+                  margin="normal"
+                />
+                {/* <TextField
                   fullWidth
                   label="Date of Birth"
                   name="dob"
@@ -111,24 +144,37 @@ const Admission = () => {
                   onChange={handleChange}
                   margin="normal"
                   required
+                /> */}
+                <TextField
+                  fullWidth
+                  label="Email"
+                  name="email"
+                  variant="outlined"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  margin="normal"
+                  type="email"
+                  required
                 />
                 <TextField
                   fullWidth
-                  label="Address"
-                  name="address"
+                  label="Password"
+                  name="password"
                   variant="outlined"
-                  value={studentInfo.address}
-                  onChange={handleChange}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
                   margin="normal"
                   required
                 />
                 <TextField
                   fullWidth
-                  label="Contact Number"
-                  name="contact"
+                  label="Confirm Password"
+                  name="confirmpass"
                   variant="outlined"
-                  value={studentInfo.contact}
-                  onChange={handleChange}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  type="password"
                   margin="normal"
                   required
                 />
@@ -148,7 +194,26 @@ const Admission = () => {
                     },
                   }}
                 >
-                  Submit
+                  Register
+                </Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  href="/login"
+                  fullWidth
+                  sx={{
+                    mt: 2,
+                    background: 'linear-gradient(45deg, #1E3A8A 30%, #6A1B9A 90%)',
+                    fontFamily: 'Roboto, sans-serif',
+                    '&:hover': {
+                      background: 'linear-gradient(45deg, #6A1B9A 30%, #1E3A8A 90%)',
+                      transform: 'scale(1.05)',
+                      transition: 'background-color 0.3s ease, transform 0.3s ease',
+                    },
+                  }}
+                >
+                  Login
                 </Button>
               </form>
             </Paper>
@@ -159,4 +224,4 @@ const Admission = () => {
   );
 };
 
-export default Admission;
+export default partialReg;
