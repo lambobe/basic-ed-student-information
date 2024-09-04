@@ -286,7 +286,7 @@ const AdditionalDetails = () => {
               type="submit"
               variant="contained"
               color="success"
-              href="/addressDetails"
+              href="/addressdetails"
               fullWidth
             >
               Next

@@ -103,7 +103,7 @@ const Login = () => {
           </Button>
           <Box mt={2} display="flex" justifyContent="space-between">
             <Button href="/forgot-password" size="small">Forgot Password?</Button>
-            <Button href="/ParentsConsent" size="small">NEW STUDENT?</Button>
+            <Button href="/parentsconsent" size="small">NEW STUDENT?</Button>
           </Box>
         </form>
       </Paper>
