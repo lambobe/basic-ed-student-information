@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Container, Box, TextField, Button, Typography, Paper, MenuItem, Grid } from '@mui/material';
 
-const enrollment = () => {
+const Enrollment = () => {
   const [enrollmentInfo, setEnrollmentInfo] = useState({
     studentID: '',
     GradeLevel: '',
@@ -221,4 +221,4 @@ const enrollment = () => {
   );
 };
 
-export default enrollment;
+export default Enrollment;
