@@ -18,11 +18,11 @@ const secondaryGrade = [
 ];
 
 const schoolTypes = [
-  { value: 'public', label: 'Public' },
-  { value: 'private', label: 'Private' },
+  { value: 'public', label: 'public' },
+  { value: 'private', label: 'private' },
 ];
 
-const PreviousSchoolDetails = () => {
+const previousschool = () => {
   return (
     <Box
       sx={{
@@ -213,4 +213,4 @@ const PreviousSchoolDetails = () => {
   );
 };
 
-export default PreviousSchoolDetails;
+export default previousschool;

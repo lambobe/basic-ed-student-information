@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Modal, Box, Typography, TextField, Button, Paper, Grid } from '@mui/material';
 
-const ParentConsent = () => {
+const parentconsent = () => {
   const [open, setOpen] = useState(true);
   const [consentInfo, setConsentInfo] = useState({
     parentName: '',
@@ -118,4 +118,4 @@ const ParentConsent = () => {
   );
 };
 
-export default ParentConsent;
+export default parentconsent;
