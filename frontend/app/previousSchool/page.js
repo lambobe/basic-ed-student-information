@@ -8,17 +8,15 @@ const primaryGrade = [
   { value: '4', label: 'Grade 4' },
   { value: '5', label: 'Grade 5' },
   { value: '6', label: 'Grade 6' },
-
-  
 ];
-const secondaryGrade = [
-    { value: '1', label: 'Grade 7' },
-    { value: '2', label: 'Grade 8' },
-    { value: '3', label: 'Grade 9' },
-    { value: '4', label: 'Grade 10' },
-  
 
-  ];
+const secondaryGrade = [
+  { value: '1', label: 'Grade 7' },
+  { value: '2', label: 'Grade 8' },
+  { value: '3', label: 'Grade 9' },
+  { value: '4', label: 'Grade 10' },
+];
+
 const schoolTypes = [
   { value: 'public', label: 'Public' },
   { value: 'private', label: 'Private' },
@@ -28,21 +26,19 @@ const PreviousSchoolDetails = () => {
   return (
     <Box
       sx={{
-        backgroundColor: '#8f86fc',
+        backgroundColor: '#c5c0fe',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        
-    
       }}
     >
       <Container
         maxWidth="md"
         sx={{
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
           padding: 3,
           borderRadius: 2,
           boxShadow: 3,
@@ -50,9 +46,80 @@ const PreviousSchoolDetails = () => {
       >
         <form>
           <Grid container spacing={3}>
-            {/* Secondary School Section */}
+            {/* Main Heading */}
             <Grid item xs={12}>
               <h2>Previous School Details</h2>
+            </Grid>
+
+            {/* Primary School Section */}
+            <Grid item xs={12}>
+              <h3>Primary School</h3>
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                label="School Name"
+                variant="outlined"
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                select
+                label="Last Grade Level"
+                variant="outlined"
+              >
+                {primaryGrade.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+
+            <Grid item xs={12} sm={3}>
+              <TextField
+                required
+                fullWidth
+                label="School Year From"
+                variant="outlined"
+                type="number"
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={3}>
+              <TextField
+                required
+                fullWidth
+                label="School Year To"
+                variant="outlined"
+                type="number"
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                select
+                label="School Type"
+                variant="outlined"
+              >
+                {schoolTypes.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+
+            {/* Secondary School Section */}
+            <Grid item xs={12}>
+              <h3>Secondary School</h3>
             </Grid>
 
             <Grid item xs={12} sm={6}>
@@ -132,72 +199,6 @@ const PreviousSchoolDetails = () => {
                 label="LRN"
                 variant="outlined"
               />
-            </Grid>
-
-            {/* Primary School Section */}
-            <Grid item xs={12}>
-              <h2>Primary School</h2>
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                label="School Name"
-                variant="outlined"
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                select
-                label="Last Grade Level"
-                variant="outlined"
-              >
-                {primaryGrade.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Grid>
-
-            <Grid item xs={12} sm={3}>
-              <TextField
-                required
-                fullWidth
-                label="School Year From"
-                variant="outlined"
-                type="number"
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={3}>
-              <TextField
-                required
-                fullWidth
-                label="School Year To"
-                variant="outlined"
-                type="number"
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                select
-                label="School Type"
-                variant="outlined"
-              >
-                {schoolTypes.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
             </Grid>
 
             <Grid item xs={12}>
