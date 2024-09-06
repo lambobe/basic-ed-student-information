@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState } from 'react';
 import { Container, Box, TextField, Button, Typography, Paper, Grid } from '@mui/material';
 
@@ -182,6 +183,7 @@ const partialReg = () => {
                   type="submit"
                   variant="contained"
                   color="primary"
+                  href="/login"
                   fullWidth
                   sx={{
                     mt: 2,

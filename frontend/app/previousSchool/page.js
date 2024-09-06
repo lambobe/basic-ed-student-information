@@ -26,7 +26,7 @@ const previousschool = () => {
   return (
     <Box
       sx={{
-        backgroundColor: '#c5c0fe',
+        backgroundColor: 'rgb(39, 92, 252)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',

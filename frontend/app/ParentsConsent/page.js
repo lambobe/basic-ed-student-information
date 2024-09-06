@@ -1,55 +1,71 @@
-'use client'
+'use client';
 
+import { Container, Box, Typography, TextField, Button, Paper, Grid } from '@mui/material';
 import React, { useState } from 'react';
-import { Modal, Box, Typography, TextField, Button, Paper, Grid } from '@mui/material';
 
-const ParentConsent = () => {
-  const [open, setOpen] = useState(true);
-  const [consentInfo, setConsentInfo] = useState({
-    parentName: '',
-    studentName: '',
-    emergencyContact: '',
-  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setConsentInfo({ ...consentInfo, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Consent Info:', consentInfo);
-   
-    setOpen(false); 
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+const parentsconsent = () => {
+    const [open, setOpen] = useState(true);
+    const [consentInfo, setConsentInfo] = useState({
+      parentName: '',
+      studentName: '',
+      emergencyContact: '',
+    });
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setConsentInfo({ ...consentInfo, [name]: value });
+      };
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Consent Info:', consentInfo);
+       
+        setOpen(false); 
+      };
+      const handleClose = () => {
+        setOpen(false);
+      };
   return (
-    <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="parent-consent-form-title"
-      aria-describedby="parent-consent-form-description"
-
+    <Container
+      maxWidth={false}
+      disableGutters
+      sx={{
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '140vh',
+        backgroundImage: "url('/images/uclm.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+   
+      }}
     >
-      
       <Box
         sx={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
+          inset: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        }}
+      />
+      
+       
+        <Box
+        sx={{
+          position: 'absolute',
+          top: '45%',
+          left: '54%',
           transform: 'translate(-50%, -50%)',
           width: 600,
           bgcolor: 'background.paper',
           boxShadow: 24,
-          p: 4,
+          p: 5,
           borderRadius: 2,
+        
         }}
       >
-        <Typography variant="h5" component="h2" gutterBottom align="center" id="parent-consent-form-title">
+         
+         <Typography variant="h5" component="h2" gutterBottom align="center" id="parent-consent-form-title">
           PARENT CONSENT FORM
         </Typography>
         <Typography variant="body2" gutterBottom id="parent-consent-form-description">
@@ -103,19 +119,18 @@ const ParentConsent = () => {
               />
             </Grid>
           </Grid>
-          <Box mt={3} display="flex" justifyContent="space-between" >
-            <Button variant="outlined" onclick={handleClose} href="/login"> 
-            Close
+          <Box mt={3} display="flex" justifyContent="space-between">
+            <Button variant="outlined" onClick={handleClose} href="/login"> 
+              Close
             </Button>
-            <Button variant="contained" color="primary"
-              type="submit" href="/partialregistration">
+            <Button variant="contained" color="primary" type="submit" href="/partialregistration">
               Submit
             </Button>
           </Box>
         </form>
       </Box>
-    </Modal>
+    </Container>
   );
 };
 
-export default ParentConsent;
+export default parentsconsent;

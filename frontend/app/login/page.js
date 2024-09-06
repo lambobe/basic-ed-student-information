@@ -1,9 +1,21 @@
-'use client';
+'use client'
 
-import { Box, Button, TextField, Typography, Paper, Container, IconButton, InputAdornment } from '@mui/material';
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  Paper,
+  Container,
+  IconButton,
+  InputAdornment,
+} from '@mui/material';
 import React, { useState } from 'react';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
+
+const logoUrl = '/images/logo.jpg';
 
 const Login = () => {
   const [IDNum, setIDNum] = useState('');
@@ -26,42 +38,76 @@ const Login = () => {
       sx={{
         position: 'relative',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
         height: '100vh',
-        backgroundImage: "url('/images/uclm.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat',
         width: '100vw',
       }}
     >
+
       <Box
         sx={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.6)',
+          width: '50%',
+          background: 'linear-gradient(to bottom, #1d9fe3, #0072b1)',
+          color: '#fff',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 4,
         }}
-      />
+      >
+        <Typography variant="h4" align="left" sx={{width:'81%'}} gutterBottom>
+          More Than Just a School
+        </Typography>
+        <Typography
+          variant="body1"
+          align="justify" 
+          sx={{ marginTop: 2, width: '80%' }}
+        >
+          At University of Cebu Lapu-Lapu and Mandaue, we’re not just a place to
+          earn a diploma. We’re a community that empowers you to discover your
+          passions, develop your talents, and become the best version of
+          yourself. Join us, and unlock a transformative educational experience
+          beyond the classroom. This is your launchpad for the future we can’t
+          wait to see what you’ll accomplish.
+        </Typography>
+      </Box>
+
+    
       <Paper
         sx={{
           position: 'relative',
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          width: '50%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
           padding: 4,
-          borderRadius: 2,
           boxShadow: 3,
-          width: '390px',
-          height: 'auto',
+          height: '100%',
         }}
       >
-        <Typography variant="h4" component="h2" gutterBottom align="center">
-          Login
+     
+        <img
+          src={logoUrl}
+          alt="University Logo"
+          style={{ maxHeight: '150px'}}
+        />
+
+  
+        <Typography variant="h5" component="h2" gutterBottom align="center" sx={{marginBottom:'40px'}}>
+          Basic Education Student Information System
         </Typography>
-        <form onSubmit={handleSubmit}>
+
+        <Typography variant="subtitle1" align="left" sx={{ width: '80%' }}>
+        Please login to your account
+        </Typography>
+
+
+        <form onSubmit={handleSubmit} style={{ width: '80%' }}>
           <Box mb={2}>
             <TextField
               fullWidth
-              label="ID Number"
+              label="Enter your ID Number or Email"
               variant="outlined"
               value={IDNum}
               onChange={(e) => setIDNum(e.target.value)}
@@ -93,17 +139,16 @@ const Login = () => {
               }}
             />
           </Box>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-          >
-            Login
+          <Button type="submit" variant="contained" color="primary" fullWidth>
+            Log in
           </Button>
           <Box mt={2} display="flex" justifyContent="space-between">
-            <Button href="/forgot-password" size="small">Forgot Password?</Button>
-            <Button href="/parentsconsent" size="small">NEW STUDENT?</Button>
+            <Button href="/forgot-password" size="small">
+              Forgot password?
+            </Button>
+            <Button href="/parentsconsent" size="small">
+              Register
+            </Button>
           </Box>
         </form>
       </Paper>
