@@ -1,4 +1,3 @@
-
 'use client'
 import React, { useState } from 'react';
 import {
@@ -18,8 +17,6 @@ import {
   Grid
 } from '@mui/material';
 
-const phoneNumberPattern = /^[0-9]{11}$/; 
-
 const AdditionalDetails = () => {
   const [studentInfo, setStudentInfo] = useState({
     nationality: '',
@@ -29,36 +26,11 @@ const AdditionalDetails = () => {
     bplace: '',
     religion: '',
     indipeople: '',
-    motherfullname: '',
-    motheroccup: '',
-    mothercontact: '',
-    fatherfullname: '',
-    fatheroccup: '',
-    fathercontact: '',
-  });
-
-  const [errors, setErrors] = useState({
-    mothercontact: '',
-    fathercontact: '',
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStudentInfo({ ...studentInfo, [name]: value });
-
-    if (name === 'mothercontact' || name === 'fathercontact') {
-      if (!phoneNumberPattern.test(value)) {
-        setErrors({
-          ...errors,
-          [name]: 'Invalid contact number. Must be 11 digits.'
-        });
-      } else {
-        setErrors({
-          ...errors,
-          [name]: ''
-        });
-      }
-    }
   };
 
   const handleSubmit = (e) => {
@@ -68,14 +40,14 @@ const AdditionalDetails = () => {
 
   return (
     <Container
-      maxWidth={false}  
+      maxWidth={false}
       disableGutters  
       sx={{
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '200vh',
+        height: '100vh',
         backgroundImage: "url('/images/basic-ed.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -202,91 +174,14 @@ const AdditionalDetails = () => {
                 </RadioGroup>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                fullWidth
-                label="Mother's Full Name"
-                name="motherfullname"
-                variant="outlined"
-                value={studentInfo.motherfullname}
-                onChange={handleChange}
-                margin="normal"
-                required
-              />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                fullWidth
-                label="Mother's Occupation"
-                name="motheroccup"
-                variant="outlined"
-                value={studentInfo.motheroccup}
-                onChange={handleChange}
-                margin="normal"
-                required
-              />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                fullWidth
-                label="Mother's Contact Number"
-                name="mothercontact"
-                variant="outlined"
-                value={studentInfo.mothercontact}
-                onChange={handleChange}
-                margin="normal"
-                error={!!errors.mothercontact}
-                helperText={errors.mothercontact}
-                required
-              />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                fullWidth
-                label="Father's Full Name"
-                name="fatherfullname"
-                variant="outlined"
-                value={studentInfo.fatherfullname}
-                onChange={handleChange}
-                margin="normal"
-                required
-              />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                fullWidth
-                label="Father's Occupation"
-                name="fatheroccup"
-                variant="outlined"
-                value={studentInfo.fatheroccup}
-                onChange={handleChange}
-                margin="normal"
-                required
-              />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                fullWidth
-                label="Father's Contact Number"
-                name="fathercontact"
-                variant="outlined"
-                value={studentInfo.fathercontact}
-                onChange={handleChange}
-                margin="normal"
-                error={!!errors.fathercontact}
-                helperText={errors.fathercontact}
-                required
-              />
-            </Grid>
           </Grid>
 
           <Box mb={2} mt={2}>
             <Button
-            
               type="submit"
               variant="contained"
               color="success"
-              href="/addressdetails"
+              href="/parentsdetails"
               fullWidth
             >
               Next

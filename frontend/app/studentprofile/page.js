@@ -8,24 +8,24 @@ const StudentProfile = () => {
   return (
     <Container maxWidth="xl" disableGutters sx={{ height: '100vh', display: 'flex', flexDirection: 'row' }}>
       
-      {/* Sidebar */}
+   
       <Drawer
         variant="permanent"
         sx={{
-          width: 80,
+          width: 100,
           flexShrink: 0,
-          [`& .MuiDrawer-paper`]: { width: 80, boxSizing: 'border-box', backgroundColor: '#0072b1', color: '#fff' },
+          [`& .MuiDrawer-paper`]: { width: 100, boxSizing: 'border-box', backgroundColor: '#0072b1', color: '#fff' },
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 2 }}>
-          {/* Student Picture */}
+       
           <Avatar
             alt="Student Picture"
             src="/images/profile.png"
             sx={{ width: 60, height: 60, mb: 2, border: '2px solid white' }}
           />
 
-          {/* Menu Icons */}
+        
           <List sx={{ width: '100%' }}>
             <ListItem button sx={{ justifyContent: 'center', color: '#fff' }}>
               <ListItemIcon sx={{ justifyContent: 'center', color: '#fff' }}>
@@ -34,8 +34,8 @@ const StudentProfile = () => {
             </ListItem>
 
             <ListItem button sx={{ justifyContent: 'center', color: '#fff' }}>
-              <ListItemIcon sx={{ justifyContent: 'center', color: '#fff' }}>
-                <Notifications />
+              <ListItemIcon sx={{ justifyContent: 'center', color: '#fff'}}>
+                <Notifications/>
               </ListItemIcon>
             </ListItem>
 
@@ -72,9 +72,9 @@ const StudentProfile = () => {
         </Box>
       </Drawer>
 
-      {/* Main Content Area */}
+     
       <Box sx={{ flexGrow: 1, backgroundColor: '#f9f9f9', padding: 3 }}>
-        {/* Header with Student Info */}
+       
         <Paper elevation={3} sx={{ padding: 3, display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 4, backgroundColor: '#0072b1', color: '#fff' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Avatar

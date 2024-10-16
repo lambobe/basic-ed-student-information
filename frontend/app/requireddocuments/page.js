@@ -106,6 +106,7 @@ const RequiredDocuments = () => {
                   type="submit"
                   variant="contained"
                   color="primary"
+                  href="/payment"
                   fullWidth
                   sx={{
                     mt: 2,

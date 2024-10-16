@@ -18,11 +18,11 @@ const secondaryGrade = [
 ];
 
 const schoolTypes = [
-  { value: 'public', label: 'public' },
-  { value: 'private', label: 'private' },
+  { value: 'public', label: 'Public' },
+  { value: 'private', label: 'Private' },
 ];
 
-const previousschool = () => {
+const PreviousSchool = () => {
   return (
     <Box
       sx={{
@@ -46,10 +46,6 @@ const previousschool = () => {
       >
         <form>
           <Grid container spacing={3}>
-            {/* Main Heading */}
-            <Grid item xs={12}>
-              <h2>Previous School Details</h2>
-            </Grid>
 
             {/* Primary School Section */}
             <Grid item xs={12}>
@@ -202,10 +198,11 @@ const previousschool = () => {
             </Grid>
 
             <Grid item xs={12}>
-              <Button variant="contained" color="primary" type="submit">
-                Submit
+              <Button variant="contained" color="success" type="submit" href="/requireddocuments">
+                NEXT
               </Button>
             </Grid>
+
           </Grid>
         </form>
       </Container>
@@ -213,4 +210,4 @@ const previousschool = () => {
   );
 };
 
-export default previousschool;
+export default PreviousSchool;

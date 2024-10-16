@@ -1,159 +1,134 @@
 'use client'
 
-import {
-  Box,
-  Button,
-  TextField,
-  Typography,
-  Paper,
-  Container,
-  IconButton,
-  InputAdornment,
-} from '@mui/material';
 import React, { useState } from 'react';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Container, TextField, Button, Checkbox, FormControlLabel, IconButton, InputAdornment } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import Snowfall from 'react-snowfall';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0047ab',
+    },
+  },
+});
 
-const logoUrl = '/images/logo.jpg';
-
-const Login = () => {
-  const [IDNum, setIDNum] = useState('');
-  const [password, setPassword] = useState('');
+function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
-  const handleMouseDownPassword = (e) => e.preventDefault();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Login:', { IDNum, password });
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
 
   return (
-    <Container
-      maxWidth={false}
-      disableGutters
-      sx={{
-        position: 'relative',
-        display: 'flex',
-        height: '100vh',
-        width: '100vw',
-      }}
-    >
-
-      <Box
-        sx={{
-          width: '50%',
-          background: 'linear-gradient(to bottom, #1d9fe3, #0072b1)',
-          color: '#fff',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: 4,
-        }}
-      >
-        <Typography variant="h4" align="left" sx={{width:'81%'}} gutterBottom>
-          More Than Just a School
-        </Typography>
-        <Typography
-          variant="body1"
-          align="justify" 
-          sx={{ marginTop: 2, width: '80%' }}
-        >
-          At University of Cebu Lapu-Lapu and Mandaue, we’re not just a place to
-          earn a diploma. We’re a community that empowers you to discover your
-          passions, develop your talents, and become the best version of
-          yourself. Join us, and unlock a transformative educational experience
-          beyond the classroom. This is your launchpad for the future we can’t
-          wait to see what you’ll accomplish.
-        </Typography>
-      </Box>
-
-    
-      <Paper
-        sx={{
-          position: 'relative',
-          width: '50%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: 4,
-          boxShadow: 3,
-          height: '100%',
-        }}
-      >
-     
-        <img
-          src={logoUrl}
-          alt="University Logo"
-          style={{ maxHeight: '150px'}}
-        />
-
-  
-        <Typography variant="h5" component="h2" gutterBottom align="center" sx={{marginBottom:'40px'}}>
-          Basic Education Student Information System
-        </Typography>
-
-        <Typography variant="subtitle1" align="left" sx={{ width: '80%' }}>
-        Please login to your account
-        </Typography>
+    <ThemeProvider theme={theme}>
+      <div style={styles.loginContainer}>
+       
+      <Snowfall color="white" snowflakeCount={50} speed={[0.01, 0.05]} wind={[0 , 0.1]} />
 
 
-        <form onSubmit={handleSubmit} style={{ width: '80%' }}>
-          <Box mb={2}>
-            <TextField
-              fullWidth
-              label="Enter your ID Number or Email"
-              variant="outlined"
-              value={IDNum}
-              onChange={(e) => setIDNum(e.target.value)}
-              required
-            />
-          </Box>
-          <Box mb={2}>
-            <TextField
-              fullWidth
-              label="Password"
-              type={showPassword ? 'text' : 'password'}
-              variant="outlined"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Box>
-          <Button type="submit" variant="contained" color="primary" fullWidth>
-            Log in
+        <Container maxWidth="xs" style={styles.loginBox}>
+          <img
+            src="/images/logo.jpg"
+            alt="University of Cebu"
+            style={styles.logo}
+          />
+          <TextField
+            fullWidth
+            label="ID Number or Email"
+            variant="outlined"
+            margin="normal"
+          />
+          <TextField
+            fullWidth
+            label="Password"
+            variant="outlined"
+            type={showPassword ? 'text' : 'password'}
+            margin="normal"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+          <FormControlLabel
+          control={<Checkbox name="remember" color="primary" />}
+          label="Remember Me"
+          sx={{ display: 'flex', justifyContent: 'flex-end', width: '103%' }}
+          />
+          <Button fullWidth variant="contained" color="primary" size="large" href="/studentprofile">
+            Login
           </Button>
-          <Box mt={2} display="flex" justifyContent="space-between">
-            <Button href="/forgot-password" size="small">
-              Forgot password?
-            </Button>
-            <Button href="/parentsconsent" size="small">
-              Register
-            </Button>
-          </Box>
-        </form>
-      </Paper>
-    </Container>
+          <div style={styles.loginLinks}>
+            <a href="/parentsconsent" style={styles.link}>Register</a>
+            <a href="/forgot-password" style={styles.link}>Forgot Your Password?</a>
+            <a href="/help" style={styles.link}>Need Help?</a>
+          </div>
+        </Container>
+      </div>
+    </ThemeProvider>
   );
+}
+
+const styles = {
+  loginContainer: {
+    position: 'relative',
+    height: '100vh',
+    background: 'radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%), linear-gradient(to bottom, #0047ab, #003366)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+
+  loginBox: {
+    backgroundColor: 'white',
+    padding: '2rem',
+    borderRadius: '10px',
+    boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
+    textAlign: 'center',
+    position: 'relative',
+    zIndex: 2,
+  },
+  logo: {
+    width: '130px',
+    marginBottom: '0rem',
+    display: 'block', 
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  loginLinks: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '1rem',
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#0047ab',
+  },
+  
+  '@keyframes blink': {
+    '0%, 100%': {
+      filter: 'brightness(100%)',
+    },
+    '50%': {
+      filter: 'brightness(50%)',
+    },
+  },
 };
 
-export default Login;
+export default LoginPage;

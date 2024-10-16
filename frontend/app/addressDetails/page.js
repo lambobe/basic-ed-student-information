@@ -126,10 +126,11 @@ const AddressDetails = () => {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
+              color="success"
               fullWidth
+              href="/previousschool"
             >
-              Submit
+              next
             </Button>
           </Box>
         </form>

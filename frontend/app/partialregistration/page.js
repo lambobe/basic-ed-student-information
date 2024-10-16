@@ -183,7 +183,7 @@ const partialReg = () => {
                   type="submit"
                   variant="contained"
                   color="primary"
-                  href="/login"
+                  href="/additionaldetails"
                   fullWidth
                   sx={{
                     mt: 2,
