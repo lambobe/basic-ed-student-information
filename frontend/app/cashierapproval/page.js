@@ -92,7 +92,7 @@ const CashierApproval = () => {
                 <TableCell>Delcampo</TableCell>
                 <TableCell>Grade 1</TableCell>
                 <TableCell>
-                  <IconButton sx={{ color: '#008080' }}>
+                  <IconButton sx={{ color: '#008080' }} href="/proofofpayment">
                     <Visibility />
                   </IconButton>
                 </TableCell>
