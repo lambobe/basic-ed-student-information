@@ -136,6 +136,7 @@ const ProofOfPayment = () => {
           <Grid item xs={12}>
             <Button
               variant="contained"
+              href= "/assessment"
               fullWidth
               sx={{
                 backgroundColor: '#008080',
